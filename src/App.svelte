@@ -64,14 +64,16 @@ const getTopHeadLines = ()=>{
             topHeadlines = data
             loading = false;
           }).catch((err)=>{
+            console.log(err)
             loading = false
   })
 }
 
-const getNewsByCategory = (category: string)=>{
+const getNewsByCategory = async (category: string)=>{
   const baseUrl = import.meta.env.VITE_NEWS_BASE_URL
   const apiKey = import.meta.env.VITE_NEWS_API_KEY
   loading1 = true;
+
   fetch(`${baseUrl}/everything?q=${category}&apiKey=${apiKey}`)
           .then(res => res.json())
           .then((result)=>{
